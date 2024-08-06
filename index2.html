@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team</title>
+    <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        }
+
+        div#slider figure {
+            position: relative;
+            width: 500%;
+            margin: 0;
+            left: 0;
+            text-align: left;
+            font-size: 0;
+            animation: 20s slidy infinite;
+        }
+
+        @keyframes slidy {
+            0% {
+                left: 0%;
+            }
+
+            20% {
+                left: 0%;
+            }
+
+            25% {
+                left: -100%;
+            }
+
+            45% {
+                left: -100%;
+            }
+
+            50% {
+                left: -200%;
+            }
+
+            70% {
+                left: -200%;
+            }
+
+            75% {
+                left: -300%;
+            }
+
+            95% {
+                left: -300%;
+            }
+
+            100% {
+                left: -400%;
+            }
+        }
+
+        div#slider {
+            overflow: hidden;
+        }
+
+        div#slider figure img {
+            width: 20%;
+            float: left;
+        }
+
+        div#slider figure {
+            position: relative;
+            width: 500%;
+            margin: 0;
+            left: 0;
+            text-align: left;
+            font-size: 0;
+            animation: 15s slidy infinite;
+        }
+
+        div#slider figure img {
+            width: 20%;
+            height: 90vh;
+            float: left;
+            margin-bottom: 50px;
+        }
+
+        .navbar {
+            display: grid;
+            position: fixed;
+            z-index: 1;
+            width: 100%;
+            padding: 1rem;
+            grid-template-columns: 1fr auto;
+            background-color: #0009;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            font-size: 20px;
+            display: inline-block;
+            position: relative;
+            transition: .5s;
+        }
+
+        .navbar a:hover {
+            color: #0ef;
+        }
+
+        .navbar a.active {
+            color: #0ef;
+        }
+
+        .navbar a span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border-bottom: 2px solid #0ef;
+            border-radius: 15px;
+            transform: scale(0) translateY(50px);
+            transition: .5s;
+        }
+
+        .navbar a:hover span {
+            transform: scale(1) translateY(0);
+        }
+
+        .navbar a.active span {
+            transform: scale(1) translateY(0);
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(6, auto);
+            gap: 1rem;
+        }
+
+        .menu-item {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #575757;
+        }
+
+        .menu-item:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+        }
+
+        #toggle {
+            display: none;
+        }
+
+        .logo svg {
+            width: 35%;
+            height: 35%;
+        }
+
+        .sign i {
+            color: #0ef;
+        }
+
+        @media (max-width: 850px) {
+            .menu {
+                display: none;
+                grid-template-columns: 1fr;
+                grid-gap: 1rem;
+                background-color: #000;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+            }
+
+            .menu-item {
+                text-align: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            #toggle:checked+.menu {
+                display: grid;
+            }
+
+            .sign {
+                text-align: center;
+            }
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .team-section {
+            text-align: center;
+        }
+
+        .team-section h1 {
+            font-size: 2.5rem;
+            color: #b03030;
+            margin-bottom: 10px;
+        }
+
+        .team-section p {
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .team-member img:hover {
+            transform: scale(1.05);
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .team-member span {
+            color: #b03030;
+            display: block;
+        }
+
+        .team-member p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .team-member .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .team-member .social-icons a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .team-member .social-icons a:hover {
+            color: #b03030;
+        }
+
+        .team-container-1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .team-section-1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-section-1 h1 {
+            font-size: 2.5rem;
+            color: #b03030;
+            text-align: center;
+        }
+
+        .team-member-1 img {
+            width: 15em;
+            height: 15em;
+            border-radius: 50%;
+            border: 1px dashed #ddd;
+            transition: .3s;
+        }
+
+        .team-member-1:hover img {
+            border-radius: 20px;
+            transform: scale(1.05);
+        }
+
+        .team-member-1 {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-member-1 h3 {
+            color: #666;
+            font-size: 20px;
+        }
+
+        .team-member-1 p {
+            font-size: 15px;
+            color: #666;
+            text-align: center;
+        }
+
+        .team-member-1 .social-icons-1 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .team-member-1 .social-icons-1 a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .team-member-1 .social-icons-1 a:hover {
+            color: #b03030;
+        }
+
+        .footer {
+            background-color: #333;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            color: #fff;
+            padding: 3em;
+            grid-gap: 3em;
+        }
+
+        .last1,
+        .link-1,
+        .link-2,
+        .wrap-2 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            cursor: pointer;
+        }
+
+        .last1 h1 {
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .link-2 h1 {
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .wrap-2 h1 {
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .last1 p:hover {
+            color: #0ef;
+        }
+
+        .last1 h1:hover {
+            color: #0ef;
+        }
+
+        .link-2 h4:hover {
+            color: #0ef;
+        }
+
+        .link-1 h1:hover {
+            color: #0ef;
+        }
+
+        .link-2 h1:hover {
+            color: #0ef;
+        }
+
+        .wrap-2 h1:hover {
+            color: #0ef;
+        }
+
+        .link-1 h1 {
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .link-1 a {
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .link-1 a:hover {
+            color: #0ef;
+        }
+
+
+        .input-box input {
+            width: 12em;
+            background-color: #f4f4f4;
+            color: #515050;
+            border: none;
+            border: 2px solid rgba(255, 255, 255, .2);
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .form .sub-btn {
+            width: 13em;
+            font-weight: 700;
+            font-size: 15px;
+            border: 2px solid white;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            background-color: transparent;
+        }
+
+        .form .sub-btn:hover {
+            background-color: #0ef;
+            border: none;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .icon i {
+            font-size: 25px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .icon i:hover {
+            color: #0ef;
+        }
+
+        .footer-last {
+            background-color: black;
+            height: 8vh;
+            padding: 2em;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .footer-last span {
+            color: #0ef;
+
+        }
+
+        @media only screen and (min-width:768px) and (max-width:995px) {
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 3em;
+            }
+
+            .team-container-1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-section p{
+                padding: 1em;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 3em;
+            }
+
+            .team-container-1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-section p{
+                padding: 1em;
+            }
+        }
+
+        @media only screen and (min-width:600px) and (max-width:760px) {
+            .team-container-1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-section p{
+                padding: 1em;
+            }
+        }
+
+        @media only screen and (max-width:580px) {
+            .footer {
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 3em;
+            }
+
+            .team-container-1 {
+                grid-template-columns: 1fr;
+            }
+            .team-section p{
+                padding: 1em;
+            }
+        }
+
+        @media only screen and (min-width:360px) and (max-width:460px) {
+            .team-container-1 {
+                grid-template-columns: 1fr;
+        
+            }
+            .team-section p{
+                padding: 1em;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="slider">
+        <div class="navbar">
+            <div class="logo">
+               <svg width="486.2000000000001" height="99.24374715003955" viewBox="0 0 369.9130434782609 75.5071093263227" class="looka-1j8o68f"><defs id="SvgjsDefs1176"></defs><g id="SvgjsG1177" featurekey="JKiIdh-0" transform="matrix(0.0940224505621678,0,0,0.0940224505621678,-1.759106701861053,-2.049170000437844)" fill="#00ffff"><defs xmlns="http://www.w3.org/2000/svg"></defs><g xmlns="http://www.w3.org/2000/svg"><path class="fil0" d="M344.98 599.77c-9.47,0 -17.15,-7.68 -17.15,-17.15 0,-9.47 7.68,-17.14 17.15,-17.14l69.85 0c7.39,0 14.15,-3.05 19.03,-7.93 4.88,-4.88 7.93,-11.64 7.93,-19.03 0,-7.39 -3.05,-14.14 -7.93,-19.02 -4.88,-4.89 -11.64,-7.93 -19.03,-7.93l-127.82 0 -2.11 -0.14c-16.41,-0.68 -32.18,2.38 -47.53,7.8 -16.37,5.76 -32.47,14.26 -48.49,23.74l-21.88 13.49 43.74 163.26 53.49 -29.26c2.72,-1.82 5.99,-2.88 9.51,-2.88l151.15 0 356.1 -180.89c6,-3.7 10.07,-9.53 11.8,-16 1.73,-6.46 1.13,-13.55 -2.2,-19.78l-0.42 -0.69c-3.46,-6 -8.9,-9.81 -15.05,-11.45 -7.14,-1.92 -15.32,-1.16 -22.98,2.15l-146.94 64.12c-1.06,0.47 -2.19,0.84 -3.38,1.08l-127.43 26.64c-2.67,11.17 -8.43,21.17 -16.29,29.03 -11.08,11.08 -26.41,17.98 -43.27,17.98l-69.85 0zm181.79 -493.7l0 60.78c14.89,6.43 29.33,14.26 43.14,23.49 2.18,1.46 3.93,3.35 5.19,5.47l74.48 -33.88 -122.81 -55.86zm0 98.54l0 43.53c0,9.47 -7.67,17.15 -17.14,17.15 -9.47,0 -17.14,-7.68 -17.14,-17.15l0 -57.69c-23.53,-7.59 -48,-11.4 -72.49,-11.4 -42.78,0 -85.52,11.62 -123.25,34.79 0,48.66 0,97.33 0,145.98 38.67,-19.9 80.99,-29.87 123.25,-29.87 42.27,0 84.59,9.97 123.26,29.87l0 -145.98c-5.4,-3.31 -10.9,-6.39 -16.49,-9.23zm-34.28 -49.9l0 -64.24 -71.87 -32.69 -228.92 104.14 73.44 33.41c1.55,-2.42 3.69,-4.44 6.22,-5.83 45.12,-29.8 96.92,-44.74 148.64,-44.74 24.38,0 48.78,3.32 72.49,9.95zm76.11 250.09c-45.1,29.8 -96.89,44.7 -148.6,44.7 -51.72,0 -103.5,-14.91 -148.62,-44.72 -5.32,-2.92 -8.92,-8.56 -8.92,-15.05l0 -157.95 -119.27 -54.26c-3.63,-1.65 -6.72,-4.58 -8.5,-8.5 -3.92,-8.62 -0.12,-18.79 8.5,-22.71l270.33 -122.97c4.36,-1.98 9.51,-2.14 14.2,0l270.33 122.97c3.65,1.69 6.73,4.63 8.51,8.58 3.87,8.62 0.04,18.75 -8.58,22.63l-120.48 54.79 0.05 157.42c0,6.5 -3.62,12.16 -8.95,15.07zm-148.6 -40.56c-36.61,0 -73.21,8.5 -106.65,25.49 33.44,16.99 70.04,25.49 106.65,25.49 36.62,0 73.22,-8.5 106.65,-25.49 -33.43,-16.99 -70.03,-25.49 -106.65,-25.49zm-262.26 157.69l13.47 -8.28c17.75,-10.52 35.82,-20.03 54.77,-26.7 19.25,-6.8 39.29,-10.61 60.57,-9.66l128.28 -0.01c16.86,0 32.19,6.9 43.27,17.97 6.4,6.4 11.41,14.23 14.49,22.95l120.51 -25.19 145.31 -63.4c14.83,-6.44 31.03,-7.8 45.54,-3.91 14.61,3.9 27.51,12.99 35.83,27.37l0.62 1.17c7.88,14.34 9.4,30.57 5.46,45.28 -4.05,15.1 -13.89,28.73 -28.52,37.17l-360.72 183.31c-2.47,1.24 -5.11,1.83 -7.71,1.83l-150.93 0.04 -58.13 31.81 6.84 25.54c2.43,9.13 -2.99,18.52 -12.12,20.96l-89.96 24.11c-9.12,2.43 -18.52,-3 -20.95,-12.13l-84.37 -314.87c-2.43,-9.13 2.99,-18.52 12.12,-20.95 2.38,-0.63 4.77,-0.73 7.05,-0.38l97.82 9.19c7.33,0.66 13.16,5.87 14.98,12.59l6.48 24.19zm31.46 249.61l-67.92 -253.49 -62.56 -5.88 73.58 274.62 56.9 -15.25z" style="fill: #0df9f9; fill-rule: nonzero;"></path></g></g><g id="SvgjsG1178" featurekey="A7DQL5-0" transform="matrix(2.886332001562426,0,0,2.886332001562426,95.94244321731051,3.7619529740042807)" fill="#0df9f9"><path d="M6.94 19.96 l0.039942 -0.63998 c-1.96 -0.13334 -3.52 -0.94668 -4.68 -2.44 c-1.1067 -1.3867 -1.66 -3.06 -1.66 -5.02 c0 -1.0267 0.16666 -1.9167 0.5 -2.67 s0.83334 -1.4833 1.5 -2.19 c1.3333 -1.4 3 -2.1 5 -2.1 c1.2133 0 2.3066 0.26 3.28 0.78 s1.7667 1.2467 2.38 2.18 l0.48 -0.38 c-0.66666 -1.0133 -1.5333 -1.8067 -2.6 -2.38 c-1.0133 -0.54666 -2.16 -0.81332 -3.44 -0.79998 c-1.08 0 -2.0934 0.18334 -3.04 0.55 s-1.78 0.93 -2.5 1.69 c-0.72 0.77334 -1.2633 1.5733 -1.63 2.4 s-0.55 1.8 -0.55 2.92 c0.01334 2.12 0.62 3.9334 1.82 5.44 c1.28 1.6133 2.98 2.5 5.1 2.66 z M8.16 19.98002 c1.0933 -0.06666 2.0934 -0.32664 3 -0.77998 c1.04 -0.53334 1.9133 -1.2867 2.62 -2.26 l-0.46 -0.4 c-0.64 0.88 -1.4467 1.5733 -2.42 2.08 c-0.84 0.42666 -1.76 0.66666 -2.76 0.72 z M23.38 20 c2.2134 0 4.1 -0.78 5.66 -2.34 c0.77334 -0.76 1.3567 -1.58 1.75 -2.46 s0.59 -1.88 0.59 -3 c0 -2.2266 -0.78 -4.1066 -2.34 -5.64 c-1.56 -1.52 -3.4866 -2.2866 -5.78 -2.3 c-1.4133 0.01334 -2.74 0.36668 -3.98 1.06 c-1.2133 0.70666 -2.18 1.6867 -2.9 2.94 l0.58 0.32 c0.65334 -1.16 1.54 -2.06 2.66 -2.7 c1.1067 -0.64 2.32 -0.96666 3.64 -0.98 c2.1334 0.01334 3.9066 0.72668 5.32 2.14 c1.4133 1.3867 2.1266 3.1066 2.14 5.16 c0 1.0267 -0.18 1.9433 -0.54 2.75 s-0.88666 1.5633 -1.58 2.27 c-1.4267 1.4267 -3.1666 2.14 -5.22 2.14 c-1.28 0 -2.44 -0.27334 -3.48 -0.82 l-0.3 0.58 c1.1333 0.58666 2.3934 0.88 3.78 0.88 z M34.64 16.06 l0 -11.82 l-0.66 0 l0 11.82 l0.66 0 z M40.02 20 l0 -0.68 l-5.38 0 l0 -1.96 l-0.66 0 l0 2.64 l6.04 0 z M43.28 16.06 l0 -11.82 l-0.66 0 l0 11.82 l0.66 0 z M48.660000000000004 20 l0 -0.68 l-5.38 0 l0 -1.96 l-0.66 0 l0 2.64 l6.04 0 z M51.82000000000001 14.16 l0 -9.36 l4.8 0 l0 -0.56 l-5.36 0 l0 9.92 l0.56 0 z M56.82000000000001 20 l0 -0.54 l-5 0 l0 -4.14 l0.8 0 l0 -0.54 l-1.36 0 l0 5.22 l5.56 0 z M64.1 20 l0.06 -0.64002 c-0.76 -0.08 -1.4033 -0.33666 -1.93 -0.77 s-0.95 -0.97 -1.27 -1.61 s-0.55 -1.3533 -0.69 -2.14 s-0.21 -1.5733 -0.21 -2.36 l0 -0.74 c0 -0.85334 0.08666 -1.69 0.26 -2.51 s0.44 -1.55 0.8 -2.19 s0.82334 -1.1567 1.39 -1.55 s1.2433 -0.59 2.03 -0.59 c0.68 0 1.2 0.08666 1.56 0.26 s0.68666 0.37334 0.98 0.6 l0.4 -0.5 c-0.38666 -0.30666 -0.79666 -0.55 -1.23 -0.73 s-1.0033 -0.27 -1.71 -0.27 c-1.5333 0 -2.77 0.68334 -3.71 2.05 s-1.41 3.1766 -1.41 5.43 l0 0.74 c0 2.16 0.41666 3.9134 1.25 5.26 s1.9767 2.1 3.43 2.26 z M65.2 19.999980469 c1.1333 -0.08 2.1134 -0.46 2.94 -1.14 l0.12 -0.1 l0 -5.34 l-3.94 0 l0 0.66 l3.3 0 l0 4.38 c-0.69334 0.52 -1.5133 0.82 -2.46 0.9 z M70.86 4.24 l0 15.76 l0.52 0 l0 -15.76 l-0.52 0 z M79.32000000000001 6.140000000000001 c0 0.08 0.23666 0.84334 0.71 2.29 s0.99 3.03 1.55 4.75 s1.3133 3.9934 2.26 6.82 l0.86 0 l-5.3 -15.76 l-0.16 0 l-5.26 15.76 l0.82 0 z M78.96000000000001 15.52 l-0.72 0 l1.2 4.48 l0.72 0 z M94.28000000000002 4.58 l-0.000019531 11.56 c0 0.36 0.0066602 0.76 0.02 1.2 s0.02 0.66666 0.02 0.68 c-0.02666 -0.04 -0.12332 -0.25666 -0.28998 -0.65 s-0.33 -0.74334 -0.49 -1.05 l-0.28 -0.54 l-0.72 0 l2.2 4.22 l0.18 0 l0 -15.42 l-0.64 0 z M88.66000000000001 7.9399999999999995 l0.27998 0.54 l0.72 0 l-2.22 -4.24 l-0.14 0 l0 15.46 l0.62 0 l0 -11.6 c0 -0.33334 -0.0066602 -0.72334 -0.02 -1.17 s-0.02 -0.67666 -0.02 -0.69 c0.01334 0.04 0.10668 0.26 0.28002 0.66 s0.34 0.74666 0.5 1.04 z"></path></g></svg>
+            </div>
+            <label for="toggle" class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </label>
+            <input type="checkbox" id="toggle">
+            <div class="menu">
+                <div class="menu-item">
+                    <a href="index.html">Home<span></span></a>
+                </div>
+                <div class="menu-item">
+                    <a href="index1.html">About<span></span></a>
+                </div>
+                <div class="menu-item">
+                    <a href="index2.html" class="active">Team<span></span></a>
+                </div>
+                <div class="menu-item">
+                    <a href="index3.html">Gallery&nbsp;<i class="fa-solid fa-caret-down"></i><span></span></a>
+                    <div class="dropdown-content">
+                        <a href="index3.html">Gallery</a>
+                        <a href="#">Error</a>
+                        <a href="#">Services</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a href="index4.html">Contact<span></span></a>
+                </div>
+                <div class="sign">
+                    <a href="index5.html">Log in<span></span>&nbsp;&nbsp;&nbsp;&nbsp;<i
+                            class="fa-solid fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+        <figure>
+            <img src="img5.jpg">
+            <img src="img2.jpg">
+            <img src="img3.jpg">
+            <img src="img4.jpg">
+            <img
+                src="https://img.freepik.com/free-photo/graduation-concept-with-students-holding-blank-certificate-template_23-2148201847.jpg?t=st=1722231023~exp=1722234623~hmac=28d8339f89e679d1a0af735dc817dd66e1040e9e428a66b46f702a153a71f170&w=740">
+        </figure>
+    </div>
+    <div class="team-section">
+        <h1>Our Team</h1>
+        <p>Our team is the heart of our success. We are proud to have a diverse group of dedicated professionals.</p>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="https://i.pinimg.com/564x/ec/47/69/ec47690fed6671a2f6763b052f4558c9.jpg" alt="">
+                <h3>Alex Greenfield</h3>
+                <span>Programming Guru</span>
+                <p>Alex Greenfield brings a wealth of experience and a passion for [specific field or subject] to our
+                    team.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://i.pinimg.com/564x/ce/dd/24/cedd24ecaaedfb3c9d9d25b85180aec1.jpg" alt="">
+                <h3>Jeffrey Brown</h3>
+                <span>Creative Leader</span>
+                <p>Jeffrey's innovative approach to [mention specific area of work or impact, such as enhancing student
+                    engagement, developing new educational programs, etc.] our team.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://i.pinimg.com/564x/90/1f/7a/901f7a87bf640883f2de3e1345c35ba9.jpg" alt="Ann Richmond">
+                <h3>Ann Richmond</h3>
+                <span>Manager</span>
+                <p>Ann's dedication to [mention specific area of work or impact, such as enhancing educational programs,
+                    mentoring students.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="team-section-1">
+        <h1>Team Member</h1>
+        <div class="team-container-1">
+            <div class="team-member-1">
+                <img src="team1.jpg" alt="">
+                <h3>Mark Jackman</h3>
+                <p>Mark's contributions to [mention specific area of work or impact, such as developing.</p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member-1">
+                <img src="team2.jpg" alt="">
+                <h3>Janet Levine</h3>
+                <p>Janet Levine is a distinguished figure known for her contributions to [specific etc].</p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member-1">
+                <img src="team3.jpg" alt="">
+                <h3>Rene Rickman</h3>
+                <p>René Rickman is a renowned professional celebrated for his remarkable achievements. </p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member-1">
+                <img src="team4.jpg">
+                <h3>Daniele Norwich</h3>
+                <p>
+                    Daniele Norwich is a prominent figure recognized for her expertise and contributions</p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member-1">
+                <img src="team5.jpg">
+                <h3>Sasha Johnson</h3>
+                <p>Sasha Johnson is a prominent activist and advocate known for her work.</p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member-1">
+                <img src="team6.jpg">
+                <h3>Darmian Shaw</h3>
+                <p>
+                    Darmian Shaw is a distinguished professional recognized for his significant contributions.</p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member-1">
+                <img src="team (3).png">
+                <h3>Joshua Matt</h3>
+                <p>
+                    Joshua Matt is an accomplished professional known for his influential work.</p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-member-1">
+                <img src="team (1).png">
+                <h3>Taylor Launer</h3>
+                <p>Taylor Launer is a notable figure recognized for his achievements in [specific field or industry].
+                </p>
+                <div class="social-icons-1">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="last1">
+            <h1>Collegian</h1>
+            <p>Collegian is a vibrant and dynamic online platform dedicated to the collegiate community. Our mission is
+                to create a space where students, faculty, and alumni can connect, share, and grow</p>
+            <div class="icon">
+                <i class="fa-brands fa-square-facebook"></i>
+                <i class="fa-brands fa-square-twitter"></i>
+                <i class="fa-brands fa-google-plus"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+        <div class="link-1">
+            <h1>University</h1>
+            <a href="#">Academic Schools</a>
+            <a href="#">Visit Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Emergency Contacts</a>
+            <a href="#">Public Information</a>
+        </div>
+        <div class="link-2">
+            <h1>Contact Us</h1>
+            <h4><b>Address</b>: 436 Jasmin Lee Hall, Cross Road, NewYork City Vl049.</h4>
+            <h4><b>Mobile</b>: 01(24) 3212 9436 , 01(24) 8543 8088</h4>
+            <h4><b>Phone</b>: 01(24) 8543 8088 , 01(24) 3212 9436 </h4>
+            <h4><b>Mail</b>: Info@Example.Com</h4>
+        </div>
+        <div class="wrap-2">
+            <h1>Subscribe</h1>
+            <div class="form">
+                <form action="">
+                    <div class="input-box">
+                        <input type="text" placeholder="Name" required="">
+                        <input type="text" placeholder="Email" required="">
+                        <button type="submit" class="sub-btn">SUBSCRIBE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-last">
+        <h4>© 2024 Collegian. All Rights Reserved | Design By <span>@Shariqua Taskeen.G</span></h4>
+    </div>
+</body>
+
+</html>
